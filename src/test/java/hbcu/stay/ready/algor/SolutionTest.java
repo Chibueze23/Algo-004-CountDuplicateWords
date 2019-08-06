@@ -1,37 +1,34 @@
 package hbcu.stay.ready.algor;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+public class Solution {
 
-public class SolutionTest {
-    Solution solution;
+    public String countUniqueWords(String input){
+        return null;
+        public String countUniqueWords(String input) {
+            String[] strArray = input.split(" ");
+            Map<String, Integer> mapA = new HashMap();
+            for (String str : strArray) {
+                if (mapA.containsKey(str)) {
+                    int counter = mapA.get(str);
+                    mapA.put(str, ++counter);
+                } else {
+                    mapA.put(str, 1);
+                }
 
-    @Before
-    public void setup(){
-        solution = new Solution();
-    }
+            }
 
-    @Test
-    public void countUniqueWordsTest1(){
-        String input = "Hello Java. Hello World. Hello Java!";
-        String expected =   "The 3 unique words are:\n" +
-                            "Hello (Seen 3)\n" +
-                            "World (Seen 1)\n" +
-                            "Java (Seen 2)";
-        String actual = solution.countUniqueWords(input);
-        Assert.assertEquals(expected, actual);
-    }
+            for (String str : mapA.keySet()){
+                int duplicateC = mapA.get(str);
+            }
 
-    @Test
-    public void countUniqueWordsTest2(){
-        String input = "that that is is that that is not is not is that it it is wutang";
-        String expected =   "The 4 unique words are:\n" +
-                            "that (Seen 5)\n" +
-                            "is (Seen 5)\n" +
-                            "not (Seen 2)\n"+
-                            "wutang (Seen 1)";
-        String actual = solution.countUniqueWords(input);
-        Assert.assertEquals(expected, actual);
+            return "The 3 unique words are:\n" +
+                    "(Seen " + mapA.get(0)+" \n" +
+                    " "+"(Seen " + mapA.get(1)+" \n" +
+                    " "+"(Seen " + mapA.get(2)+" \n";
+
+
+        }
     }
 }
